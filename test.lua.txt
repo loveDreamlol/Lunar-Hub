@@ -273,18 +273,6 @@ local Esp_Health = Esp:CreateToggle({
 	end,
 })
 
-local Speed = Speed:CreateSlider({
-	Name = "Speed",
-	Range = {16, 300},
-	Increment = 10,
-	Suffix = "Speed",
-	CurrentValue = 16,
-	Flag = "Slider1", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-	Callback = function(Value)
-		localPlayer.Character.Humanoid.WalkSpeed = Value
-	end,
-})
-
 local Jump = Speed:CreateSlider({
 	Name = "Jump",
 	Range = {20, 300},
@@ -294,5 +282,17 @@ local Jump = Speed:CreateSlider({
 	Flag = "Slider2", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 	Callback = function(Value)
 		localPlayer.Character.Humanoid.JumpPower = Value
+	end,
+})
+
+local Speed = Speed:CreateSlider({
+	Name = "Speed",
+	Range = {16, 300},
+	Increment = 10,
+	Suffix = "Speed",
+	CurrentValue = 16,
+	Flag = "Slider1", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		localPlayer.Character.Humanoid.WalkSpeed = Value
 	end,
 })
