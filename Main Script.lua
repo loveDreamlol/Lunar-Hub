@@ -17,6 +17,13 @@ local AimBotSettings = {
 	MaxDistance = 500
 }
 
+Rayfield:Notify({
+	Title = "The key is accepted",
+	Content = "Access is open",
+	Duration = 6.5,
+	Image = "rewind",
+})
+
 local function DeleteCircle()
 	local CircleGui = localPlayer.PlayerGui:FindFirstChild("RedCircleGui")
 	if CircleGui then
@@ -409,24 +416,30 @@ local Esp_Health = Esp:CreateToggle({
 local Player_Speed = Speed:CreateSlider({
 	Name = "Speed",
 	Range = {16, 300},
-	Increment = 10,
+	Increment = 1,
 	Suffix = "Speed",
 	CurrentValue = 16,
 	Flag = "Slider1", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 	Callback = function(Value)
-		localPlayer.Character.Humanoid.WalkSpeed = Value
+		while localPlayer.Character:FindFirstChild("Humanoid") do
+			localPlayer.Character.Humanoid.WalkSpeed = Value
+			task.wait()
+		end
 	end,
 })
 
 local Player_Jump = Speed:CreateSlider({
 	Name = "Jump",
-	Range = {20, 300},
-	Increment = 10,
+	Range = {50, 300},
+	Increment = 1,
 	Suffix = "Jump",
 	CurrentValue = 20,
 	Flag = "Slider2", -- A flag is the identifier for the configuration file; make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 	Callback = function(Value)
-		localPlayer.Character.Humanoid.JumpPower = Value
+		while localPlayer.Character:FindFirstChild("Humanoid") do
+			localPlayer.Character.Humanoid.JumpPower = Value
+			task.wait()
+		end
 	end,
 })
 
